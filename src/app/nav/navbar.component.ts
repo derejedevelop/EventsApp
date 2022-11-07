@@ -1,4 +1,6 @@
+import { ThisReceiver } from "@angular/compiler";
 import { Component, createPlatform } from "@angular/core";
+import { EventService, ISession } from "../events";
 import { AuthService } from "../user/auth.service";
 
 @Component({
@@ -14,8 +16,18 @@ import { AuthService } from "../user/auth.service";
 
 
 export class NavBarComponenet {
-    
-    constructor(public authService: AuthService) {
-        
+    searchTerm: string = "";
+    foundSessions: ISession[];
+    constructor(
+            public authService: AuthService,
+            private eventService: EventService) {  
+    }
+
+    searchSessions(searchTerm){
+        this.eventService.searchSessions(searchTerm).subscribe
+        (sessions => {
+            this.foundSessions = sessions;
+            
+        })
     }
 }
