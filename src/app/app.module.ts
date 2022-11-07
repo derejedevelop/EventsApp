@@ -17,7 +17,9 @@ import {
   EventRouteActivator,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  voterService
 } from './events/index'
 
 import {
@@ -46,7 +48,8 @@ let jQuery = window['$'];
     CollapisbleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ let jQuery = window['$'];
   ],
   providers: [
     EventService,
+    voterService,
     {
       provide: TOASTR_TOKEN, useValue: toastr
     },
